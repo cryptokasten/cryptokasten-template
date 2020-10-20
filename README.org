@@ -1,0 +1,29 @@
+#+TITLE: {{ doc.title }}
+#+TAGS: {{ doc.tags | join(",") }}
+{% if doc.header_args_property %}#+PROPERTY: header-args :session *shell {{ doc.id }}* :results silent raw {% endif %}
+#+OPTIONS: ^:nil
+
+[[https://github.com/cryptokasten][file:https://img.shields.io/badge/dynamic/json.svg?url=https://api.github.com/users/cryptokasten&label=Cryptokasten&query=$.public_repos]]
+
+{{ doc.description }}
+
+{% doc.environment %}
+** Environment description
+
+{% endif %}
+
+{% if doc.data %}
+** Data description
+*** Parameters
+*** Input data
+*** Output data
+{% endif %}
+
+** {{ doc.title }}
+
+{% if doc.references %}
+** References
+{% for ref in references %}
+- {{ ref }}
+{% endfor %}
+{% endif %}
